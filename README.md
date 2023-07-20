@@ -1,14 +1,27 @@
-# Shopping
+# Shopping App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+## Description
 
-## Development server
+The Shopping App is an Angular-based web application designed to provide users with an intuitive and seamless shopping experience. This app allows users to browse through various products, view product details,
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- Browse through a wide range of products with detailed descriptions.
+- Admin dashboard to add , delete and edit products
+- Multi-language the app is available in Arabic (RTL) and English  
+- Responsive design for optimal viewing on both desktop and mobile devices.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+
+## Installation
+
+1. Clone the repository: `git clone https://github.com/your-username/shopping-app.git`
+2. Install dependencies: `npm install`
+
+## Usage
+
+1. Run the app locally: `ng serve`
+2. Open your web browser and navigate to `http://localhost:4200`
 
 ## Build
 
@@ -18,6 +31,12 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Technologies Used
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Angular 12 - Frontend framework
+- Angular Material - UI components and styling
+- Bootstrap - Responsive design
+- TypeScript - Programming language
+- HTML5/CSS3 - Markup and styling
+- Git - Version control
+- RXJS -  Asynchronous code - state Management 

@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
   <div class="row justify-content-between w-100">
     <div class="col-md-2 col-lg-2 col-1">
-      <div class="d-flex justify-content-center align-items-center">
+      <a class="d-flex justify-content-center align-items-center" href="/" >
         <img src="assets/images/logo.png" alt="Logo" height="40" />
         <span class="mx-2 d-none d-lg-block">{{
           "GENERAL.SHOPPING" | translate
           }}</span>
-      </div>
+        </a>
     </div>
     <div class="col-md-10 col-lg-10 col-11">
       <div class="header-nav" *ngIf="loggedInUser$ | async as user">
