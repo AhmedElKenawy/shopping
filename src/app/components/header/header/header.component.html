@@ -1,35 +1,39 @@
 <mat-toolbar color="primary">
-  <div class="d-flex justify-content-between w-100">
-    <div class="header-logo mx-4 align-items-center">
-      <img src="assets/images/logo.png" alt="Logo" height="40" />
-      <span class="mx-2 d-none d-lg-block">{{
-        "GENERAL.SHOPPING" | translate
-        }}</span>
+  <div class="row justify-content-between w-100">
+    <div class="col-md-2 col-lg-2 col-1">
+      <div class="d-flex justify-content-center align-items-center">
+        <img src="assets/images/logo.png" alt="Logo" height="40" />
+        <span class="mx-2 d-none d-lg-block">{{
+          "GENERAL.SHOPPING" | translate
+          }}</span>
+      </div>
     </div>
-
-    <div class="header-nav" *ngIf="loggedInUser$ | async as user">
-      <div class="mx-4">
-        <app-switch-language></app-switch-language>
-      </div>
-      <button mat-button routerLink="/">
-        {{ "GENERAL.HOME" | translate }}
-      </button>
-      <button mat-button routerLink="/dashboard/products" *ngIf="user && user.role == 'admin'">
-        {{ "GENERAL.DASHBOARD" | translate }}
-      </button>
-
-      <div class="profile-section d-flex align-items-center mx-2">
-        <img [src]="user.avatar" alt="User Avatar" height="40" />
-        <span>{{ user.name }}</span>
-      </div>
-      <button mat-icon-button [matMenuTriggerFor]="userMenu">
-        <mat-icon>keyboard_arrow_down</mat-icon>
-      </button>
-      <mat-menu #userMenu="matMenu">
-        <button mat-menu-item (click)="logout()">
-          {{ "GENERAL.LOGOUT" | translate }}
+    <div class="col-md-10 col-lg-10 col-11">
+      <div class="header-nav" *ngIf="loggedInUser$ | async as user">
+        <div class="mx-2">
+          <app-switch-language></app-switch-language>
+        </div>
+        <button mat-button routerLink="/">
+          {{ "GENERAL.HOME" | translate }}
         </button>
-      </mat-menu>
+        <button mat-button routerLink="/dashboard/products" *ngIf="user && user.role == 'admin'">
+          {{ "GENERAL.DASHBOARD" | translate }}
+        </button>
+  
+        <button mat-button [matMenuTriggerFor]="userMenu">
+        <div class="profile-section d-flex align-items-center mx-2">
+          <img [src]="user.avatar" alt="User Avatar" height="40" />
+          <span class=" d-none d-lg-block">{{ user.name }}</span>
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </div>
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item (click)="logout()">
+            {{ "GENERAL.LOGOUT" | translate }}
+          </button>
+        </mat-menu>
+      </div>
+
     </div>
   </div>
 </mat-toolbar>

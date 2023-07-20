@@ -12,6 +12,7 @@ import { CategoriesService } from 'src/app/core/services';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { ModalsModule } from 'src/app/components/modals/modals.module';
+import { MatSortModule} from '@angular/material/sort';
 
 
 const routes: Routes = [
@@ -56,7 +57,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    ModalsModule
+    ModalsModule,
+    MatSortModule
   ],
   providers  :[CategoryResolver , CategoriesService
   ]

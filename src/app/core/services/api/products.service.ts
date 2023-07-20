@@ -17,12 +17,13 @@ export class ProductService {
         return this.httpClient.get<Product>(`${environment.baseUrl}/products/${id}`)
     }
 
-    getProducts(category: string | null = null): Observable<Product[]> {
+    getProducts(category: string | null = null , sort : string =  'asc' ): Observable<Product[]> {
         let url = 'products'
         if (category && category !== 'All') {
             url = `${url}/category/${category}`
         }
-        return this.httpClient.get<Product[]>(`${environment.baseUrl}/${url}`)
+        console.log(sort)
+        return this.httpClient.get<Product[]>(`${environment.baseUrl}/${url}?sort=${sort}`)
     }
 
     updateProducts(product: Product): Observable<Product> {

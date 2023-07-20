@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Sort } from '@angular/material/sort';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationComponent } from 'src/app/components/modals/confirmation/confirmation.component';
@@ -14,7 +15,8 @@ import { ProductService } from 'src/app/core/services';
 })
 export class ProductListComponent {
   loading = false
-  products: Product[] = []
+  products: Product[] = [];
+  sort  = 'asc';
   constructor(private productService: ProductService,
     private dialog: MatDialog,
     private _snackBar: MatSnackBar,
@@ -28,7 +30,7 @@ export class ProductListComponent {
   }
   loadAllProducts() {
     this.loading = true;
-    this.productService.getProducts().subscribe({
+    this.productService.getProducts(null, this.sort).subscribe({
       next: (products) => {
         this.products = products;
         this.loading = false
@@ -53,6 +55,10 @@ export class ProductListComponent {
   }
   openSnackBar(message: string) {
     this._snackBar.open(message, 'OK', { duration: 2000 });
+  }
+  announceSortChange(sortState: Sort) {
+    this.sort = sortState.direction 
+      this.loadAllProducts()
   }
 
 }
