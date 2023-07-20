@@ -16,6 +16,5 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatDialogModule
   ],
   exports :[ConfirmationComponent],
-  // entryComponents : [ConfirmationComponent]
 })
 export class ModalsModule { }
