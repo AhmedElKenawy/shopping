@@ -1,5 +1,6 @@
 import AUTH from './en/auth';
 import GENERAL from './en/general';
+import PRODUCT  from './en/product'
 
 
 export const locale = {
@@ -7,5 +8,6 @@ export const locale = {
   data: {
     AUTH,
     GENERAL,
+    PRODUCT
   }
 };

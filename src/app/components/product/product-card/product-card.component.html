@@ -1,0 +1,12 @@
+<div class="card" *ngIf="product">
+    <img class="card-img-top" [src]="product.image" alt="Product Image">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text">{{'PRODUCT.PRICE'|translate}} : {{ product.price }} $</p>
+      <div class="rating" >
+        <mat-icon *ngFor="let rate of [1, 2, 3, 4, 5]" class="star-icon">{{ product.rating && product.rating.rate >= rate ? 'star' : 'star_border' }}</mat-icon>
+      </div>
+      <p class="category">{{'PRODUCT.CATEGORY'|translate}}: <a [routerLink]="['/products', { category: product.category }]">{{ product.category }}</a></p>
+      <button mat-raised-button color="primary" routerLink="/products/{{ product.id }}">{{'PRODUCT.VIEW_DETAILS'|translate}}</button>
+    </div>
+  </div>

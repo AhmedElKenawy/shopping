@@ -1,0 +1,33 @@
+
+.toggle-container {
+  font-size: 1rem;
+  direction: ltr !important;
+  border-radius: 15px;
+  width: 80px;
+  height: 30px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .element {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .element-active {
+    background-color: #f44336;
+    color: #fff;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+  width: 80px;
+  height: 30px;
+  }
+}

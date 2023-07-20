@@ -1,0 +1,26 @@
+<div class="container">
+    <div *ngIf="loading; else productDetailsContainer">
+        <mat-spinner [diameter]="40"></mat-spinner>
+    </div>
+    <ng-template #productDetailsContainer>
+        <div class="row">
+            <div class="col-md-6">
+                <img class="product-image" [src]="product?.image" alt="Product Image">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ product?.title }}</h2>
+                <p>{{'PRODUCT.CATEGORY '| translate}}: {{ product?.category }}</p>
+                <p>{{'PRODUCT.PRICE '| translate}}: {{ product?.price }}</p>
+                <div class="rating d-flex align-items-center">
+                    <mat-icon *ngFor="let rate of [1, 2, 3, 4, 5]" class="star-icon">{{product && product.rating &&
+                        product.rating.rate >= rate ? 'star' : 'star_border' }}</mat-icon>
+                    <span class="rate-count">({{ product && product.rating && product.rating.count ?
+                        product.rating.count :
+                        0}})</span>
+                </div>
+
+                <p>{{ product?.description }}</p>
+            </div>
+        </div>
+    </ng-template>
+</div>

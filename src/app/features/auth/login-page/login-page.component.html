@@ -1,13 +1,37 @@
 <div class="container">
-    <h1 class="mt-3">Shopping App with Bootstrap</h1>
-    <div class="row mt-3">
-      <div class="col-md-6 ">
-        <h2>Dummy image </h2>
-        <!-- Add your products section content here -->
-      </div>
-      <div class="col-md-6 ">
-        <h2>Login Section</h2>
-        <!-- Add your login section content here -->
-      </div>
+    <div class="row ">
+        <div class="col-md-6 col-lg-6 d-none d-lg-block  align-items-center	justify-content-center">
+            <img src="assets/images/online-shopping.png" alt="online store image" class="cover-image">
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <app-switch-language></app-switch-language>
+            <div class="my-auto">
+                <div class="intro ">
+                    <h2>{{'AUTH.LOGIN_PAGE.WELCOME_TO_APP' |translate}}</h2>
+                    <h3>{{'AUTH.LOGIN_PAGE.LOGIN' |translate}}</h3>
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>{{'AUTH.LOGIN_PAGE.USERNAME' |translate}}</mat-label>
+                        <input matInput formControlName="username" placeholder="{{'AUTH.LOGIN_PAGE.ENTER_USERNAME' |translate}}">
+                        <mat-error *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+                            {{'AUTH.LOGIN_PAGE.USER_NAME_IS_REQUIRED' |translate}}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>{{'AUTH.LOGIN_PAGE.PASSWORD' |translate}}</mat-label>
+                        <input matInput formControlName="password" type="password"  placeholder="{{'AUTH.LOGIN_PAGE.ENTER_PASSWORD' |translate}}">
+                        <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                            {{'AUTH.LOGIN_PAGE.PASSWORD_IS_REQUIRED' |translate}}
+                        </mat-error>
+                    </mat-form-field>
+                    <div *ngIf="showErrorMessage && loginForm.touched" class="error-message">
+                        <p>{{'AUTH.LOGIN_PAGE.INVALID_USERNAME_PASSWORD' |translate}}</p>
+                    </div>
+                    <button mat-raised-button color="primary" type="submit">{{'AUTH.LOGIN_PAGE.LOGIN' |translate}}</button>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
