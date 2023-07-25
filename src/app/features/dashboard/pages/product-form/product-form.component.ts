@@ -64,7 +64,7 @@ export class ProductFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.loading) return;
-    this.showErrorMessage  = false
+    this.showErrorMessage = false
     if (this.productForm?.valid) {
       const productData = this.productForm.value;
       let sub;
@@ -84,8 +84,8 @@ export class ProductFormComponent implements OnInit {
         error: () => {
           this.loading = false;
           setTimeout(() => {
-            
-            this.showErrorMessage  = true
+
+            this.showErrorMessage = true
           }, 5000);
         }
       })

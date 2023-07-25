@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sort } from '@angular/material/sort';
-import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { ConfirmationComponent } from 'src/app/components/modals/confirmation/confirmation.component';
 import { Product } from 'src/app/core/models';
 import { ProductService } from 'src/app/core/services';
@@ -14,51 +14,58 @@ import { ProductService } from 'src/app/core/services';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
-  loading = false
+  isLoading = false
   products: Product[] = [];
-  sort  = 'asc';
+  sort = 'asc';
+  subscriptions$: Subscription[] = [];
   constructor(private productService: ProductService,
     private dialog: MatDialog,
-    private _snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,
     private translate: TranslateService,
   ) { }
   ngOnInit(): void {
-
     this.loadAllProducts()
   }
-  ngOnDestroy() {
-  }
+
   loadAllProducts() {
-    this.loading = true;
-    this.productService.getProducts(null, this.sort).subscribe({
+    this.isLoading = true;
+    const getProductSub$ = this.productService.getProducts(null, this.sort).subscribe({
       next: (products) => {
         this.products = products;
-        this.loading = false
+        this.isLoading = false
       },
       error: () => {
-        this.loading = false
+        this.isLoading = false
       }
     })
+    this.subscriptions$.push(getProductSub$)
   }
-  deleteProduct(productId: string): void {
+  
+  openDeleteProductDialog(productId: string): void {
     const dialogRef = this.dialog.open(ConfirmationComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.productService.deleteProduct(productId).subscribe({
-          next: () => {
-          this.openSnackBar(this.translate.instant('PRODUCT.PRODUCT_DELETED'));
-            this.loadAllProducts();
-          }
-        });
-      }
+    dialogRef.afterClosed().subscribe(isDeleteConfirmed => {
+      if (isDeleteConfirmed) this.deleteProduct(productId)
     });
   }
+
+  deleteProduct(productId: string) {
+    const deleteProductSub$: Subscription = this.productService.deleteProduct(productId).subscribe({
+      next: () => {
+        this.openSnackBar(this.translate.instant('PRODUCT.PRODUCT_DELETED'));
+        this.loadAllProducts();
+      }
+    });
+    this.subscriptions$.push(deleteProductSub$);
+  }
   openSnackBar(message: string) {
-    this._snackBar.open(message, 'OK', { duration: 2000 });
+    this.snackBar.open(message, 'OK', { duration: 2000 });
   }
   announceSortChange(sortState: Sort) {
-    this.sort = sortState.direction 
-      this.loadAllProducts()
+    this.sort = sortState.direction
+    this.loadAllProducts()
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions$.forEach(subscription => subscription.unsubscribe())
+  }
 }
