@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ProductModule } from 'src/app/components/product/product.module';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductService } from 'src/app/core/services';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CategoriesService, ProductService } from 'src/app/core/services';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { FilterComponent } from './components/filter/filter.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   {
@@ -29,15 +32,18 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ProductDetailsComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductCardComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    ProductModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCardModule,
+    MatListModule
   ],
-  providers: [ProductService]
+  providers: [ProductService, CategoriesService]
 })
 export class ProductsModule { }

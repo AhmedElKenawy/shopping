@@ -1,12 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
-import { HeaderModule } from 'src/app/components/header/header.module';
+import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductService } from 'src/app/core/services/api/products.service';
-import { ProductModule } from 'src/app/components/product/product.module';
 import { AdminGuard } from 'src/app/core/guards/admin.guard';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { HeaderComponent } from './components/header/header.component';
 
 const Routes: Routes = [
   {
@@ -36,12 +37,14 @@ const Routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
+    HeaderComponent
   ],
   imports: [
     RouterModule.forChild(Routes),
     CommonModule,
-    HeaderModule,
     SharedModule,
+    MatToolbarModule,
+    MatMenuModule,
   ],
   providers: [ProductService, AdminGuard]
 })
