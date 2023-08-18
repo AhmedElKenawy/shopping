@@ -37,14 +37,13 @@ const Routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-    HeaderComponent
   ],
   imports: [
     RouterModule.forChild(Routes),
     CommonModule,
     SharedModule,
-    MatToolbarModule,
-    MatMenuModule,
+    HeaderComponent,
+   
   ],
   providers: [ProductService]
 })

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TranslationService } from 'src/app/core/services';
 
@@ -5,6 +6,9 @@ import { TranslationService } from 'src/app/core/services';
   selector: 'app-switch-language',
   templateUrl: './switch-language.component.html',
   styleUrls: ['./switch-language.component.scss'],
+  standalone : true,
+  providers : [TranslationService ],
+  imports:[CommonModule]
 })
 export class SwitchLanguageComponent implements OnInit {
   lang!: string;
