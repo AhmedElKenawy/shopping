@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/core/models';
@@ -15,11 +16,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
   styleUrls: ['./header.component.scss'],
   standalone: true,
   imports: [
-    SwitchLanguageComponent, 
+    SwitchLanguageComponent,
     CommonModule,
-     TranslateModule, 
-     SharedModule,
+    TranslateModule,
+    SharedModule,
     MatToolbarModule,
+    RouterModule,
     MatMenuModule,]
 })
 export class HeaderComponent {

@@ -12,8 +12,8 @@ import { CategoriesService } from 'src/app/core/services';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
-import { ConfirmationComponent } from './components/confirmation-modal/confirmation.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmationComponent } from 'src/app/shared/components/confirmation-modal/confirmation.component';
 
 const routes: Routes = [
   {
@@ -48,7 +48,6 @@ const routes: Routes = [
   declarations: [
     ProductListComponent,
     ProductFormComponent,
-    ConfirmationComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +59,7 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatSortModule,
-    MatDialogModule,
+    ConfirmationComponent
   ],
   providers: [CategoryResolver, CategoriesService
   ]

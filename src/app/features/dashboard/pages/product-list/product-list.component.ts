@@ -4,9 +4,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sort } from '@angular/material/sort';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { ConfirmationComponent } from 'src/app/features/dashboard/components/confirmation-modal/confirmation.component';
 import { Product } from 'src/app/core/models';
 import { ProductService } from 'src/app/core/services';
+import { ConfirmationComponent } from 'src/app/shared/components/confirmation-modal/confirmation.component';
 
 @Component({
   selector: 'app-product-list',
@@ -39,7 +39,7 @@ export class ProductListComponent {
       }
     })
     this.subscriptions$.push(getProductSub$)
-  }
+  } 
   
   openDeleteProductDialog(productId: string): void {
     const dialogRef = this.dialog.open(ConfirmationComponent);

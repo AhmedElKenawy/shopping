@@ -9,8 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -30,10 +29,7 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule,
-
-
-
+    MatSelectModule
   ],
 })
 export class SharedModule { }
