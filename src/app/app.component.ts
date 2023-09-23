@@ -11,11 +11,18 @@ import { locale as enLang } from './core/i18n/en';
 })
 export class AppComponent implements OnInit {
   title = 'shopping';
-  constructor( private translationService: TranslationService){
-    this.translationService.loadTranslations(enLang, arLang);
+  constructor(private translationService: TranslationService) {
+    this.loadAvailableLangueFiles()
   }
-
+  
   ngOnInit(): void {
+    this.initDefaultLanguage()
+  }
+  loadAvailableLangueFiles(){
+    this.translationService.loadTranslations(enLang, arLang);
+    
+  }
+  initDefaultLanguage(): void {
     this.translationService.setLanguage(
       this.translationService.getSelectedLanguage()
     );
